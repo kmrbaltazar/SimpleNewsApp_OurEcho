@@ -1,11 +1,13 @@
 <script setup>
 import Header from './components/home_components/Header.vue'
+import SearchBar from './components/home_components/SearchBar.vue'
 </script>
 
 <template>
 <Header />
 <main>
 <h1>Get access to top news globally</h1>
+<SearchBar />
 </main>
 
 </template>
@@ -14,6 +16,10 @@ import Header from './components/home_components/Header.vue'
 h1 {
   color: #006297;
   font-size: 21px;
+}
+
+main {
+  margin: 20px;
 }
 
 </style>
