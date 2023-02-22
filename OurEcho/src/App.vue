@@ -2,6 +2,7 @@
 import Header from "./components/home_components/Header.vue";
 import SearchBar from "./components/home_components/SearchBar.vue";
 import Button from "./components/home_components/Button.vue";
+import Footer from "./components/home_components/Footer.vue";
 </script>
 
 <template>
@@ -11,13 +12,11 @@ import Button from "./components/home_components/Button.vue";
       <h1>Get access to top news globally</h1>
       <SearchBar />
       <div class="news_categories_grid">
-        <Button
-          v-for="category in news_top_categories"
-          :Button_prop="category"
-        />
+        <Button v-for="category in news_top_categories" :Button_prop="category" />
       </div>
     </section>
   </main>
+  <Footer />
 </template>
 
 <style scoped>
@@ -40,8 +39,8 @@ main {
 .news_categories_grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: minmax(50px,auto);
-  gap: 20px;
+  grid-auto-rows: minmax(50px, auto);
+  gap: 15px;
 }
 </style>
 
