@@ -18,12 +18,12 @@
   padding: 0 10px;
 }
 
-input {
+.input_div input {
   border: none;
   height: 35px;
 }
 
-input:focus {
+.input_div input:focus {
     outline: none;
 }
 

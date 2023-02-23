@@ -17,7 +17,7 @@
     background-color: #fff;
 }
 
-a {
+.search_keyword_wrapper  a {
     color: #56B7EC;
 }
 

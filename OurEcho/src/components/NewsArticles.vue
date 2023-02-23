@@ -31,13 +31,13 @@
     height: 100px;
 }
 
-p {
+.news_text p {
     font-size: 12px;
     margin-top: 5px;
     font-style: italic;
 }
 
-h4 {
+.news_text h4 {
     color: #006297;
 }
 </style>
