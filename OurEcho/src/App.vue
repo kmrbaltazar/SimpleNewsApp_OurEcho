@@ -16,12 +16,12 @@ import NewsArticles from "./components/NewsArticles.vue";
     </section>
   </div>
   <main>
-    <section class="home_section" v-if="my_boolean">
+    <section class="home_section" :class="{other_main_class:my_boolean}">
       <h1>Get access to top news globally</h1>
       <div class="search_bar">
         <div class="input_div">
-          <input type="text" placeholder="Enter search keyword" />
-          <div class="searchicon_wrapper">
+          <input type="text" placeholder="Enter search keyword" v-model="query" />
+          <div class="searchicon_wrapper" @click="data_fetch" >
             <img src="@/assets/icons/search_icon.svg" alt="Search icon" />
           </div>
         </div>
@@ -34,16 +34,21 @@ import NewsArticles from "./components/NewsArticles.vue";
       </div>
     </section>
     <section class="news_section">
-        <div class="news_card_wrapper" v-for="(articles, index) in newsAPI_data_array" :key="index">
+      <div
+        class="news_card_wrapper"
+        v-for="(articles, index) in newsAPI_data_array"
+        :key="index">
         <div class="news_text">
-            <h4>{{articles.title}}</h4>
-            <!-- <p class="news_url">{{Articles_prop.url}}</p> -->
-            <p class="news_author">by {{articles.author}}<span v-if="!articles.author.length">Anonymous</span></p>
+          <h4>{{ articles.title }}</h4>
+          <p class="news_author">
+            by {{ articles.author
+            }}<span v-if="!articles.author">Anonymous</span>
+          </p>
         </div>
         <div class="news_img_wrapper">
-            <img :src="articles.urlToImage" alt="News Article Image">
+          <img :src="articles.urlToImage" alt="News Article Image" />
         </div>
-    </div>
+      </div>
     </section>
   </main>
   <Footer />
@@ -57,6 +62,10 @@ h1 {
 
 main {
   margin: 130px 10px 0 10px;
+}
+
+.other_main_class {
+  margin-top: 90px !important;
 }
 
 .home_section {
@@ -118,7 +127,11 @@ main {
 
 /* Button wrapper */
 .button_wrapper {
-  background: linear-gradient(180deg, rgba(86,183,236,1) 0%, rgba(0,98,151,1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(86, 183, 236, 1) 0%,
+    rgba(0, 98, 151, 1) 100%
+  );
   border-radius: 10px;
   height: 45px;
   color: #fff;
@@ -130,31 +143,31 @@ main {
 
 /* News Card wrapper */
 .news_card_wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    gap: 5px;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  gap: 5px;
+  z-index: 1;
 }
 
 .news_text {
-    flex: 1.5;
+  flex: 1.5;
 }
 
 .news_img_wrapper {
-    flex: 1;
-    height: 100px;
+  flex: 1;
+  height: 100px;
 }
 
 .news_text p {
-    font-size: 12px;
-    margin-top: 5px;
-    font-style: italic;
+  font-size: 12px;
+  margin-top: 5px;
+  font-style: italic;
 }
 
 .news_text h4 {
-    color: #006297;
+  color: #006297;
 }
 </style>
 
@@ -182,15 +195,16 @@ export default {
   methods: {
     async data_fetch() {
       const response = await fetch(
-        "https://newsapi.org/v2/everything?q=technology&apiKey=1c6df44b32f64dc1866e9dab4d670ce8"
+        'https://newsapi.org/v2/everything?q='+this.query+'&apiKey=1c6df44b32f64dc1866e9dab4d670ce8'
       );
       const received_data = await response.json();
       this.newsAPI_data_array = received_data.articles;
+      console.log(this.newsAPI_data_array);
     },
   },
 
   created() {
-    this.data_fetch();
+    // this.data_fetch();
   },
 };
 </script>
