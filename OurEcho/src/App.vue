@@ -24,7 +24,7 @@ import SearchKeywordDisplay from './components/home_components/SearchKeyword_dis
       </div>
     </section>
     <section class="news_section">
-      <NewsArticles v-for="articles in newsAPI_data_array" :Articles_prop="articles" />
+      <NewsArticles v-for="(articles,index) in newsAPI_data_array" :Articles_prop="articles" :key="index" />
     </section>
   </main>
   <Footer />

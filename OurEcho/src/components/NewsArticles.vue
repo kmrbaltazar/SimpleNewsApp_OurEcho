@@ -9,6 +9,7 @@
             <img :src="Articles_prop.urlToImage" alt="News Article Image">
         </div>
     </div>
+   
 </template>
 
 <style scoped>
@@ -19,8 +20,6 @@
     padding: 10px 0;
     gap: 5px;
     z-index: 1;
-    
-    
 }
 
 .news_text {
@@ -29,7 +28,7 @@
 
 .news_img_wrapper {
     flex: 1;
-    height: 90px;
+    height: 100px;
 }
 
 p {
