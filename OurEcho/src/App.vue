@@ -20,7 +20,7 @@ import SearchKeywordDisplay from './components/home_components/SearchKeyword_dis
       <h1>Get access to top news globally</h1>
       <SearchBar @searchclick="get_searchinput" />
       <div class="news_categories_grid">
-        <Button v-for="category in news_top_categories" :Button_prop="category" />
+        <Button v-for="category in news_top_categories" :Button_prop="category" @click="get_searchinput(category)" />
       </div>
     </section>
     <section class="news_section">
