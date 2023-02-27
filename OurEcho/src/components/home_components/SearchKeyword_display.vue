@@ -1,6 +1,6 @@
 <template>
     <div class="search_keyword_wrapper">
-        <h4>Search: </h4>
+        <h4>Search: {{Keyword_prop}}</h4>
         <p><a href="">Go back</a></p>
     </div>
 </template>

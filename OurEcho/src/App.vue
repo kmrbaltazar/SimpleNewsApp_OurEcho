@@ -12,7 +12,7 @@ import SearchKeywordDisplay from './components/home_components/SearchKeyword_dis
 <div class="fixed">
   <Header />
   <section class="news_section">
-  <SearchKeywordDisplay />
+  <SearchKeywordDisplay :Keyword_prop="query" />
   </section>
   </div>
   <main>
