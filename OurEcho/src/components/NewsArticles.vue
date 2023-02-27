@@ -3,7 +3,7 @@
         <div class="news_text">
             <h4>{{Articles_prop.title}}</h4>
             <!-- <p class="news_url">{{Articles_prop.url}}</p> -->
-            <p class="news_author">by {{Articles_prop.author}}<span v-if="!Articles_prop.author.length">Anonymous</span></p>
+            <p class="news_author">by {{Articles_prop.author}}<span v-if="!Articles_prop.author">Anonymous</span></p>
         </div>
         <div class="news_img_wrapper">
             <img :src="Articles_prop.urlToImage" alt="News Article Image">

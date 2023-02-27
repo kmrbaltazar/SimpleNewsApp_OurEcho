@@ -18,7 +18,7 @@ import SearchKeywordDisplay from './components/home_components/SearchKeyword_dis
   <main>
     <section class="home_section">
       <h1>Get access to top news globally</h1>
-      <SearchBar @searchclick="data_fetch" @searchvalue="query" />
+      <SearchBar @searchclick="get_searchinput" />
       <div class="news_categories_grid">
         <Button v-for="category in news_top_categories" :Button_prop="category" />
       </div>
@@ -89,6 +89,10 @@ export default {
       const response = await fetch("https://newsapi.org/v2/everything?q="+this.query+"&apiKey=1c6df44b32f64dc1866e9dab4d670ce8");
       const received_data = await response.json();
       this.newsAPI_data_array = received_data.articles;
+    },
+    get_searchinput(input_val){
+      this.query = input_val;
+      this.data_fetch();
     }
   }, 
 
