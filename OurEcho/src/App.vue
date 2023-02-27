@@ -5,7 +5,8 @@ import Button from "./components/home_components/Button.vue";
 import Footer from "./components/home_components/Footer.vue";
 import NewsArticles from './components/NewsArticles.vue';
 import ScrollMenu from './components/home_components/Scrolling_NewsCategories.vue';
-import SearchKeywordDisplay from './components/home_components/SearchKeyword_display.vue'
+import SearchKeywordDisplay from './components/home_components/SearchKeyword_display.vue';
+import Loading from './components/Loading.vue'
 </script>
 
 <template>
@@ -16,13 +17,16 @@ import SearchKeywordDisplay from './components/home_components/SearchKeyword_dis
   </section>
   </div>
   <main>
-    <section class="home_section">
+    <section class="home_section" v-if="my_boolean">
       <h1>Get access to top news globally</h1>
       <SearchBar @searchclick="get_searchinput" />
       <div class="news_categories_grid">
         <Button v-for="category in news_top_categories" :Button_prop="category" @click="get_searchinput(category)" />
       </div>
     </section>
+
+  <Loading v-if="!my_boolean && !newsAPI_data_array.length" />
+
     <section class="news_section">
       <NewsArticles v-for="(articles,index) in newsAPI_data_array" :Articles_prop="articles" :key="index" />
     </section>
@@ -79,7 +83,7 @@ export default {
         "Entertainment",
       ],
       newsAPI_data_array: [],
-      my_boolean: false,
+      my_boolean: true,
       query: ""
     }; 
   },
@@ -93,6 +97,7 @@ export default {
     get_searchinput(input_val){
       this.query = input_val;
       this.data_fetch();
+      this.my_boolean = false;
     }
   }, 
 
