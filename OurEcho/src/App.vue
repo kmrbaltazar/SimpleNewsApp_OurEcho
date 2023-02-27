@@ -18,7 +18,7 @@ import SearchKeywordDisplay from './components/home_components/SearchKeyword_dis
   <main>
     <section class="home_section" v-if="my_boolean">
       <h1>Get access to top news globally</h1>
-      <SearchBar />
+      <SearchBar @searchclick="data_fetch" />
       <div class="news_categories_grid">
         <Button v-for="category in news_top_categories" :Button_prop="category" />
       </div>
@@ -93,7 +93,7 @@ export default {
   }, 
 
   created(){ 
-    this.data_fetch();
+    // this.data_fetch();
   } 
 };
 </script>

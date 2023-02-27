@@ -1,7 +1,7 @@
 <template>
   <div class="input_div">
     <input type="text" placeholder="Enter search keyword" />
-    <div class="searchicon_wrapper">
+    <div class="searchicon_wrapper" @click="$emit('searchclick')">
       <img src="@/assets/icons/search_icon.svg" alt="Search icon" />
     </div>
   </div>
@@ -28,3 +28,17 @@ input:focus {
 }
 
 </style>
+
+<script>
+export default {
+  data(){
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+  emits:['searchclick']
+}
+</script>
