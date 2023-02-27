@@ -16,9 +16,9 @@ import SearchKeywordDisplay from './components/home_components/SearchKeyword_dis
   </section>
   </div>
   <main>
-    <section class="home_section" v-if="my_boolean">
+    <section class="home_section">
       <h1>Get access to top news globally</h1>
-      <SearchBar @searchclick="data_fetch" />
+      <SearchBar @searchclick="data_fetch" @searchvalue="query" />
       <div class="news_categories_grid">
         <Button v-for="category in news_top_categories" :Button_prop="category" />
       </div>

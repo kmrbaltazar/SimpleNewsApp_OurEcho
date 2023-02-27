@@ -1,6 +1,6 @@
 <template>
   <div class="input_div">
-    <input type="text" placeholder="Enter search keyword" />
+    <input type="text" placeholder="Enter search keyword" v-model="$emit('searchvalue')" />
     <div class="searchicon_wrapper" @click="$emit('searchclick')">
       <img src="@/assets/icons/search_icon.svg" alt="Search icon" />
     </div>
@@ -39,6 +39,6 @@ export default {
   methods: {
 
   },
-  emits:['searchclick']
+  emits:['searchvalue','searchclick']
 }
 </script>
