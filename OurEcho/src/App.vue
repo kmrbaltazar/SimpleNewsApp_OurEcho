@@ -86,7 +86,7 @@ export default {
 
   methods:{ 
     async data_fetch(){
-      const response = await fetch("https://newsapi.org/v2/everything?q=technology&apiKey=1c6df44b32f64dc1866e9dab4d670ce8");
+      const response = await fetch("https://newsapi.org/v2/everything?q="+this.query+"&apiKey=1c6df44b32f64dc1866e9dab4d670ce8");
       const received_data = await response.json();
       this.newsAPI_data_array = received_data.articles;
     }
