@@ -5,24 +5,28 @@ import Button from "./components/home_components/Button.vue";
 import Footer from "./components/home_components/Footer.vue";
 import NewsArticles from './components/NewsArticles.vue';
 import ScrollMenu from './components/home_components/Scrolling_NewsCategories.vue';
-import SearchKeywordDisplay from './components/home_components/SearchKeyword_display.vue'
+import SearchKeywordDisplay from './components/home_components/SearchKeyword_display.vue';
+import Loading from './components/Loading.vue'
 </script>
 
 <template>
 <div class="fixed">
   <Header />
   <section class="news_section">
-  <SearchKeywordDisplay />
+  <SearchKeywordDisplay :Keyword_prop="query" />
   </section>
   </div>
   <main>
     <section class="home_section" v-if="my_boolean">
       <h1>Get access to top news globally</h1>
-      <SearchBar />
+      <SearchBar @searchclick="get_searchinput" />
       <div class="news_categories_grid">
-        <Button v-for="category in news_top_categories" :Button_prop="category" />
+        <Button v-for="category in news_top_categories" :Button_prop="category" @click="get_searchinput(category)" />
       </div>
     </section>
+
+  <Loading v-if="!my_boolean && !newsAPI_data_array.length" />
+
     <section class="news_section">
       <NewsArticles v-for="(articles,index) in newsAPI_data_array" :Articles_prop="articles" :key="index" />
     </section>
@@ -79,21 +83,26 @@ export default {
         "Entertainment",
       ],
       newsAPI_data_array: [],
-      my_boolean: false,
+      my_boolean: true,
       query: ""
     }; 
   },
 
   methods:{ 
     async data_fetch(){
-      const response = await fetch("https://newsapi.org/v2/everything?q=technology&apiKey=1c6df44b32f64dc1866e9dab4d670ce8");
+      const response = await fetch("https://newsapi.org/v2/everything?q="+this.query+"&apiKey=1c6df44b32f64dc1866e9dab4d670ce8");
       const received_data = await response.json();
       this.newsAPI_data_array = received_data.articles;
+    },
+    get_searchinput(input_val){
+      this.query = input_val;
+      this.data_fetch();
+      this.my_boolean = false;
     }
   }, 
 
   created(){ 
-    this.data_fetch();
+    // this.data_fetch();
   } 
 };
 </script>

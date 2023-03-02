@@ -1,7 +1,7 @@
 <template>
   <div class="input_div">
-    <input type="text" placeholder="Enter search keyword" />
-    <div class="searchicon_wrapper">
+    <input type="text" placeholder="Enter search keyword" v-model="search_value" />
+    <div class="searchicon_wrapper" @click="$emit('searchclick',search_value)">
       <img src="@/assets/icons/search_icon.svg" alt="Search icon" />
     </div>
   </div>
@@ -28,3 +28,17 @@ input:focus {
 }
 
 </style>
+
+<script>
+export default {
+  data(){
+    return {
+      search_value: ''
+    }
+  },
+  methods: {
+
+  },
+  emits:['searchclick']
+}
+</script>

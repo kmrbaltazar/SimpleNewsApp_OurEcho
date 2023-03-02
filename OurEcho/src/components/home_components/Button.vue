@@ -21,12 +21,8 @@
 defineProps({
   Button_prop: {
     // Change 'PropName' to your choice of variable name and match it in the component that is sending the prop value
-    type: Array, //Change to the type of prop variable you plan to receive e.g. String, Number, Array, Object, Boolean
+    type: String, //Change to the type of prop variable you plan to receive e.g. String, Number, Array, Object, Boolean
     required: true,
   },
-  SingleButton_prop: {
-    type: String,
-    required: true,
-  }
 }); // end of defineProps
 </script>
