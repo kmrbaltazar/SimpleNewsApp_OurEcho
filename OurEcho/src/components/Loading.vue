@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
+    margin-top: 50px;
 }
 
   .loader {
@@ -23,6 +24,11 @@
   height: 120px;
   animation: spin 5s linear infinite;
 }  
+
+h1 {
+  color: #006297;
+  font-size: 21px;
+}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
