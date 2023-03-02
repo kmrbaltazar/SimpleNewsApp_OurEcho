@@ -22,6 +22,11 @@
     z-index: 1;
 }
 
+.news_author{
+    max-width:120px;
+    overflow:hidden;
+}
+
 .news_text {
     flex: 1.5;
 }
