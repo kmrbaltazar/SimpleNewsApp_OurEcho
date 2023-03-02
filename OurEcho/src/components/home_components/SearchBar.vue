@@ -1,10 +1,21 @@
 <template>
-  <div class="input_div">
-    <input type="text" placeholder="Enter search keyword" v-model="search_value" />
-    <div class="searchicon_wrapper" @click="$emit('searchclick',search_value)">
-      <img src="@/assets/icons/search_icon.svg" alt="Search icon" />
+  <section class="input_section">
+    <div class="input_div">
+      <input
+        type="text"
+        placeholder="Enter search keyword"
+        v-model="search_value"
+      />
+      <div class="searchicon_wrapper" @click="search_clicked">
+        <img src="@/assets/icons/search_icon.svg" alt="Search icon" />
+      </div>
     </div>
-  </div>
+    <span v-if="warning">
+      <p class="no_input_value_p" >
+        <sup>*</sup>Please enter a keyword or click on a topic below
+      </p>
+    </span>
+  </section>
 </template>
 
 <style scoped>
@@ -24,25 +35,38 @@ input {
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 img {
   filter: drop-shadow(2px 2px 2px grey);
 }
 
+.no_input_value_p {
+  color: red;
+  font-style: italic;
+  font-size: 12px;
+  text-align: left;
+}
 </style>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      search_value: ''
-    }
+      search_value: "",
+      warning: false
+    };
   },
   methods: {
-
+    search_clicked() {
+      this.warning = false;
+      if (this.search_value.length) 
+        this.$emit("searchclick",this.search_value);
+      else
+        this.warning = true;
+    },
   },
-  emits:['searchclick']
-}
+  emits: ["searchclick"],
+};
 </script>
