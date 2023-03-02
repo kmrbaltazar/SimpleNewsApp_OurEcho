@@ -27,6 +27,10 @@ input:focus {
     outline: none;
 }
 
+img {
+  filter: drop-shadow(2px 2px 2px grey);
+}
+
 </style>
 
 <script>
