@@ -4,7 +4,6 @@ import SearchBar from "./components/home_components/SearchBar.vue";
 import Button from "./components/home_components/Button.vue";
 import Footer from "./components/home_components/Footer.vue";
 import NewsArticles from "./components/NewsArticles.vue";
-import ScrollMenu from "./components/home_components/Scrolling_NewsCategories.vue";
 import SearchKeywordDisplay from "./components/home_components/SearchKeyword_display.vue";
 import Loading from "./components/Loading.vue";
 </script>
@@ -12,10 +11,10 @@ import Loading from "./components/Loading.vue";
 <template>
   <div class="fixed">
     <Header />
-    <SearchKeywordDisplay :Keyword_prop="query" />
+    <SearchKeywordDisplay :Keyword_prop="query" v-if="!no_fetch_yet"  />
   </div>
   <section class="main-grid">
-    <main>
+    <main :class="{no_keyword:no_fetch_yet}">
       <section class="home_section" v-if="no_fetch_yet">
         <h1>Get access to top news globally</h1>
         <SearchBar @searchclick="get_searchinput" />
@@ -54,6 +53,10 @@ h1 {
 
 main {
   margin: 140px 10px 0 10px;
+}
+
+.no_keyword {
+  margin-top: 100px !important;
 }
 
 .home_section {
