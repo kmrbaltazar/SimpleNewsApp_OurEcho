@@ -16,7 +16,7 @@ import Loading from "./components/Loading.vue";
   </div>
   <section class="main-grid">
     <main>
-      <section class="home_section" v-if="my_boolean">
+      <section class="home_section" v-if="no_fetch_yet">
         <h1>Get access to top news globally</h1>
         <SearchBar @searchclick="get_searchinput" />
         <div class="news_categories_grid">
@@ -28,7 +28,7 @@ import Loading from "./components/Loading.vue";
         </div>
       </section>
 
-      <Loading v-if="!my_boolean && !newsAPI_data_array.length" />
+      <Loading v-if="!no_fetch_yet && !newsAPI_data_array.length" />
 
       <NewsArticles
         v-for="(articles, index) in newsAPI_data_array"
@@ -94,7 +94,7 @@ export default {
         "Entertainment",
       ],
       newsAPI_data_array: [],
-      my_boolean: true,
+      no_fetch_yet: true,
       query: "",
     };
   },
@@ -112,7 +112,7 @@ export default {
     get_searchinput(input_val) {
       this.query = input_val;
       this.data_fetch();
-      this.my_boolean = false;
+      this.no_fetch_yet = false;
     },
   },
 
