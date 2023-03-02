@@ -12,9 +12,7 @@ import Loading from "./components/Loading.vue";
 <template>
   <div class="fixed">
     <Header />
-    <section class="news_section">
-      <SearchKeywordDisplay :Keyword_prop="query" />
-    </section>
+    <SearchKeywordDisplay :Keyword_prop="query" />
   </div>
   <section class="main-grid">
     <main>
@@ -32,13 +30,11 @@ import Loading from "./components/Loading.vue";
 
       <Loading v-if="!my_boolean && !newsAPI_data_array.length" />
 
-      <section class="news_section">
-        <NewsArticles
-          v-for="(articles, index) in newsAPI_data_array"
-          :Articles_prop="articles"
-          :key="index"
-        />
-      </section>
+      <NewsArticles
+        v-for="(articles, index) in newsAPI_data_array"
+        :Articles_prop="articles"
+        :key="index"
+      />
     </main>
     <Footer />
   </section>
