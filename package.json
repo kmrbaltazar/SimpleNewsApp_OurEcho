@@ -2,5 +2,9 @@
   "dependencies": {
     "lottie-vuejs": "^0.4.0",
     "lottie-web-vue": "^2.0.6"
+  },
+  "scripts": {
+    "deploy": "gh-pages -d dist"
   }
+  
 }
