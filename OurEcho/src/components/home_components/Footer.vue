@@ -13,5 +13,14 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (min-width: 63em) {
+    footer {
+        width: 40%;
+    }
 }
 </style>

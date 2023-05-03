@@ -21,7 +21,11 @@ a {
     color: #56B7EC;
 }
 
-
+@media (min-width: 63em) {
+    .search_keyword_wrapper {
+        width: 40%;
+    }
+}
 </style>
 
 <script setup>

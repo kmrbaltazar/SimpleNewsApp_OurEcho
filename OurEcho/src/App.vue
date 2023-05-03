@@ -9,6 +9,7 @@ import Loading from "./components/Loading.vue";
 </script>
 
 <template>
+  <section class="body">
   <div class="fixed">
     <Header />
     <SearchKeywordDisplay :Keyword_prop="query" v-if="!no_fetch_yet"  />
@@ -35,8 +36,9 @@ import Loading from "./components/Loading.vue";
         :key="index"
       />
     </main>
-    <Footer />
+    <Footer />  
   </section>
+</section>
 </template>
 
 <style scoped>
@@ -78,6 +80,14 @@ main {
   position: fixed;
   top: 0;
   z-index: 10;
+}
+
+@media (min-width: 63em){
+  .body {
+    width: 40%;
+    margin: 0 auto;
+    border: 1px solid rgb(227, 226, 226);
+  }
 }
 </style>
 

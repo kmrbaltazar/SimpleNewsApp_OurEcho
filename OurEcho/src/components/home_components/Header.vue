@@ -24,4 +24,10 @@ header {
 .logo_wrapper {
     height: 55px;
 }
+
+@media (min-width: 63em) {
+    header {
+        width: 40%;
+    }
+}
 </style>
